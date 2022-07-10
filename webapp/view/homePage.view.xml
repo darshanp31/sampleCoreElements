@@ -1,0 +1,24 @@
+<mvc:View controllerName="sampleCoreElements.sampleCoreElements.controller.homePage" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m">
+	<Shell id="shell">
+		<App id="sampleCoreElements">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<TileContainer id="container" 
+						               tileDelete="handleTileDelete" 
+						               tiles="{optionForUsers>/TileCollection}">
+							<StandardTile icon="{optionForUsers>icon}" 
+							              type="{optionForUsers>type}" 
+							              number="{optionForUsers>number}" 
+							              numberUnit="{optionForUsers>numberUnit}" 
+							              title="{optionForUsers>title}" 
+							              info="{optionForUsers>info}" 
+							              infoState="{optionForUsers>infoState}"/>
+						</TileContainer>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
