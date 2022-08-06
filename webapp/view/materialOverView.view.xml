@@ -2,7 +2,7 @@
 	controllerName="sampleCoreElements.sampleCoreElements.controller.materialOverView" xmlns:html="http://www.w3.org/1999/xhtml">
 	<App>
 		<pages>
-			<Page title="MaterialOverView">
+			<Page title="MaterialDescription">
 				<content></content>
 			</Page>
 		</pages>
