@@ -4,8 +4,15 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("sampleCoreElements.sampleCoreElements.controller.homePage", {
-		onInit: function () {
-
+		
+		onPress : function(){
+	//	var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+	//	oRouter.navTO("materialoverview");
+		this.getOwnerComponent().getRouter().navTo("materialoverview");
 		}
+		
+//		onInit: function () {
+
+//		}
 	});
 });
