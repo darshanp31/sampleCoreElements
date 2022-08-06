@@ -1,9 +1,11 @@
-<mvc:View controllerName="sampleCoreElements.sampleCoreElements.controller.homePage" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View controllerName="sampleCoreElements.sampleCoreElements.controller.homePage" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true"
 	xmlns="sap.m">
 	<Shell id="shell">
-		<App id="sampleCoreElements">
+		<App >
 			<pages>
-				<Page id="page" title="{i18n>title}">
+				<Page id="page">
 					<content>
 						<TileContainer id="container" 
 						               tileDelete="handleTileDelete" 
@@ -14,7 +16,9 @@
 							              numberUnit="{optionForUsers>numberUnit}" 
 							              title="{optionForUsers>title}" 
 							              info="{optionForUsers>info}" 
-							              infoState="{optionForUsers>infoState}"/>
+							              infoState="{optionForUsers>infoState}"
+							              press= "onPress"
+							              />
 						</TileContainer>
 					</content>
 				</Page>
