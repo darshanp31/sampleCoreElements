@@ -1,9 +1,87 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	controllerName="sampleCoreElements.sampleCoreElements.controller.materialOverView" xmlns:html="http://www.w3.org/1999/xhtml">
+<mvc:View xmlns:core="sap.ui.core" xmlns:micro="sap.suite.ui.microchart" xmlns:fb="sap.ui.comp.filterbar" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sampleCoreElements.sampleCoreElements.controller.materialOverView">
 	<App>
 		<pages>
-			<Page title="MaterialDescription">
-				<content></content>
+			<Page title="Material Overview" backgroundDesign="Solid" showNavButton="true" navButtonPress="onBack">
+				<content>
+					<ObjectHeader xmlns="sap.m" title="{globalModel>/Shortage Summary/Title}" number="{globalModel>/Shortage Summary/Number}" numberUnit="$" id="header3" backgroundDesign="Translucent">
+						<statuses>
+							<ObjectStatus text="Success" state="Success" id="status5"/>
+						</statuses>
+						<attributes>
+							<ObjectAttribute text="{globalModel>/Shortage Summary/Text}" id="attribute5"/>
+						</attributes>
+					</ObjectHeader>
+					<sap.ui.layout:VerticalLayout xmlns:sap.ui.layout="sap.ui.layout" width="100%" id="layout2">
+						<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+							<fb:filterItems>
+								<fb:FilterItem name="A" label="By Product">
+									<fb:control>
+										<Input width="100%" liveChange="onProduct" id="__input4"/>
+									</fb:control>
+								</fb:FilterItem>
+								<fb:FilterItem name="B" label="By ID(Exact)">
+									<fb:control>
+										<Input width="100%" liveChange="onChangeID" id="__input5"/>
+									</fb:control>
+								</fb:FilterItem>
+								<fb:FilterItem name="C" label="By Supplier">
+									<fb:control>
+										<Input width="100%" liveChange="onSupplier" id="__input6"/>
+									</fb:control>
+								</fb:FilterItem>
+							</fb:filterItems>
+						</fb:FilterBar>
+						<sap.ui.layout:content>
+							<Table noDataText="Drop column list items here and columns in the area above" id="table0" mode="MultiSelect" items="{globalModel>/Material Data/}">
+								<items>
+									<ColumnListItem type="Active" id="item3">
+										<cells>
+											<ObjectIdentifier title="{globalModel>Material Name}" text="{globalModel>Material Num}" titleActive="true" titlePress="titleClicked"/>
+											<Text text="{globalModel>Material Group}" id="text8"/>
+											<Text text="{globalModel>Material Supplier}" id="text9"/>
+											<Text text="{globalModel>Availability/0/Quantity}" id="text10"/>
+											<FlexBox height="140px" width="100px">
+											<micro:ColumnMicroChart size="S" press="press" class="sapUiSmallMargin" columns="{globalModel>Availability/}">
+												<micro:columns>
+													<micro:ColumnMicroChartData value="{globalModel>Quantity}" color="{                path:'globalModel>Quantity',                formatter: '.formatter.formatBarColor'   }"/>
+												
+												</micro:columns>
+											</micro:ColumnMicroChart>
+											</FlexBox>
+										</cells>
+									</ColumnListItem>
+								</items>
+								<columns>
+									<Column id="column0">
+										<header>
+											<Label text="Material" id="label0"/>
+										</header>
+									</Column>
+									<Column id="column1">
+										<header>
+											<Label text="Material Group" id="label1"/>
+										</header>
+									</Column>
+									<Column id="column2">
+										<header>
+											<Label text="Supplier" id="label2"/>
+										</header>
+									</Column>
+									<Column id="column3">
+										<header>
+											<Label text="Stock availability now" id="label3"/>
+										</header>
+									</Column>
+										<Column id="column4">
+										<header>
+											<Label text="Stock availability (Next 3)" id="label4"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+						</sap.ui.layout:content>
+					</sap.ui.layout:VerticalLayout>
+				</content>
 			</Page>
 		</pages>
 	</App>

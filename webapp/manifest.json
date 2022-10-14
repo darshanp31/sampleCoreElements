@@ -17,6 +17,10 @@
 			"optionForUsersDataSrc": {
 				"uri": "model/data.json",
 				"type": "JSON"
+			},
+			"globalModelSrc": {
+				"uri": "model/dataOverView.json",
+				"type": "JSON"
 			}
 		}
 	},
@@ -46,9 +50,45 @@
 		"dependencies": {
 			"minUI5Version": "1.65.6",
 			"libs": {
-				"sap.ui.layout": {},
+				"sap.m": {},
+				"sap.suite.ui.microchart": {
+					"minVersion": ""
+				},
+				"sap.ui.codeeditor": {
+					"minVersion": ""
+				},
+				"sap.ui.commons": {
+					"minVersion": ""
+				},
+				"sap.ui.comp": {
+					"minVersion": ""
+				},
 				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.ui.documentation": {
+					"minVersion": ""
+				},
+				"sap.ui.dt": {
+					"minVersion": ""
+				},
+				"sap.ui.export": {
+					"minVersion": ""
+				},
+				"sap.ui.generic.app": {
+					"minVersion": ""
+				},
+				"sap.ui.generic.template": {
+					"minVersion": ""
+				},
+				"sap.ui.integration": {
+					"minVersion": ""
+				},
+				"sap.ui.layout": {},
+				"sap.ui.table": {
+					"minVersion": ""
+				},
+				"sap.ui.ux3": {
+					"minVersion": ""
+				}
 			}
 		},
 		"contentDensities": {
@@ -65,6 +105,10 @@
 			"optionForUsers": {
 				"type": "sap.ui.model.json.JSONModel",
 				"dataSource": "optionForUsersDataSrc"
+			},
+			"globalModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "globalModelSrc"
 			}
 		},
 		"resources": {
@@ -72,7 +116,14 @@
 				{
 					"uri": "css/style.css"
 				}
-			]
+			],
+			"js": [{
+				
+				"uri": "util/formatter.js"
+				
+			}]
+			
+			
 		},
 		"routing": {
 			"config": {
@@ -89,7 +140,7 @@
 					"name": "home",
 					"target": "home"
 				},
-					{
+				{
 					"pattern": "materialoverview",
 					"name": "materialoverview",
 					"target": "materialoverview"

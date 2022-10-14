@@ -1,45 +1,61 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/mvc/Controller",
+	"sampleCoreElements/sampleCoreElements/util/formatter"
+], function (Controller, formatter) {
 	"use strict";
-
 	return Controller.extend("sampleCoreElements.sampleCoreElements.controller.materialOverView", {
-
+		formatter: formatter,
+		onChangeID: function (oEvt) {
+			var aFilter = [];
+			var query = oEvt.getSource().getValue("value");
+			// getParameter("value");
+			if (query && query.length > 0) {
+				var oFilter = new sap.ui.model.Filter("Material Num", sap.ui.model.FilterOperator.EQ, query);
+				aFilter.push(oFilter);
+			}
+			var oTable = this.getView().byId("table0");
+			oTable.getBinding("items").filter(aFilter);
+		},
+		onSupplier: function (oEvt) {
+			var aFilter = [];
+			var query = oEvt.getSource().getValue("value");
+			// getParameter("value");
+			if (query && query.length > 0) {
+				var oFilter = new sap.ui.model.Filter("Material Supplier", sap.ui.model.FilterOperator.Contains, query);
+				aFilter.push(oFilter);
+			}
+			var oTable = this.getView().byId("table0");
+			oTable.getBinding("items").filter(aFilter);
+		},
+		onProduct: function (oEvt) {
+			var aFilter = [];
+			var query = oEvt.getSource().getValue("value");
+			// getParameter("value");
+			if (query && query.length > 0) {
+				var oFilter = new sap.ui.model.Filter("Material Name", sap.ui.model.FilterOperator.Contains, query);
+				aFilter.push(oFilter);
+			}
+			var oTable = this.getView().byId("table0");
+			oTable.getBinding("items").filter(aFilter);
+		},
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf sampleCoreElements.sampleCoreElements.view.materialOverView
 		 */
 		onInit: function () {
-
+			
+			
 		},
-
 		/**
-		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-		 * (NOT before the first rendering! onInit() is used for that one!).
-		 * @memberOf sampleCoreElements.sampleCoreElements.view.materialOverView
+		 *@memberOf sampleCoreElements.sampleCoreElements.controller.materialOverView
 		 */
-		//	onBeforeRendering: function() {
-		//
-		//	},
 
-		/**
-		 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-		 * This hook is the same one that SAPUI5 controls get after being rendered.
-		 * @memberOf sampleCoreElements.sampleCoreElements.view.materialOverView
-		 */
-		//	onAfterRendering: function() {
-		//
-		//	},
-
-		/**
-		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-		 * @memberOf sampleCoreElements.sampleCoreElements.view.materialOverView
-		 */
-		//	onExit: function() {
-		//
-		//	}
-
+		onBack: function (oEvent) {
+				
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			 oRouter.navTo("home");
+		
+		}
 	});
-
 });
